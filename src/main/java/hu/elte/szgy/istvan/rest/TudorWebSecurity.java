@@ -51,15 +51,15 @@ public class TudorWebSecurity extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
 
 //  SIMPLE USERSERVICE TO BE USED FOR TESTING ONLY
-     UserDetails user =
-             User.withDefaultPasswordEncoder()
-                .username("admin")
-                .password("password")
-                .roles("ADMIN")
-                .build();
+//     UserDetails user =
+//             User.withDefaultPasswordEncoder()
+//                .username("admin")
+//                .password("password")
+//                .roles("ADMIN")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(user);
 
-        return new InMemoryUserDetailsManager(user);
-
-//        return new TudorUserService();
+        return new TudorUserService();
     }
 }

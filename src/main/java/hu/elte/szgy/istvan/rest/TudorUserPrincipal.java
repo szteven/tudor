@@ -4,6 +4,8 @@ import hu.elte.szgy.istvan.data.Felhasznalo;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,10 @@ public class TudorUserPrincipal implements UserDetails {
 
     public java.util.Collection<? extends GrantedAuthority> getAuthorities() { return auths; }
     public java.lang.String getUsername() { return user.getFelhasznalonev(); }
-    public java.lang.String getPassword() { return user.getJelszo(); }
+    public java.lang.String getPassword() {
+        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        return encoder.encode(user.getJelszo());
+    }
     public int getTudorId() { return user.getId(); }
 
     public boolean isEnabled() { return true; }

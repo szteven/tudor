@@ -7,9 +7,13 @@ Draft Spring Boot app
 - pass: demopass
 
 mysql> create database tudorDB;
+
 mysql> CREATE USER 'demouser'@'localhost' IDENTIFIED BY 'demopass';
+
 mysql> GRANT ALL PRIVILEGES ON tudorDB . * TO 'demouser'@'localhost';
+
 mysql> FLUSH PRIVILEGES;
+
 
 ## Provisioning
 
